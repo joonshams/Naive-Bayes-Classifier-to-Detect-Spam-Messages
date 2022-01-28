@@ -2,20 +2,15 @@
 This MATLAB example demonstrates how a Naive Bayes classifer can be used to detect spam text messages using a training dataset
 
 Naïve Bayes Training Model
-To classify a test sample text message as spam or not spam, I take the Naïve Bayes’ approach. In this approach, the feature vector is x_i∈{0,1}^(n_i )
-for n_i number of words in the i-th text message. Using this definition and assuming that the conditional probability of x is independent
-of each other given target y, we can estimate the probability of a message being spam or not (p(x|y) from this assumption. That is, 
+To classify a test sample text message as spam or not spam, I take the Naïve Bayes’ approach. In this approach, the feature vector is x_i∈{0,1}^(n_i ) for n_i number of words in the i-th text message. Using this definition and assuming that the conditional probability of x is independent of each other given target y, we can estimate the probability of a message being spam or not (p(x|y) from this assumption. That is, 
 
-p(x_1…x_n│y)=p(x_1│y)p(x_2│y)…p(x_n |y)
+>>p(x_1…x_n│y)=p(x_1│y)p(x_2│y)…p(x_n |y)
 
 Instead of
 
-p(x_1…x_n│y)=p(x_1│y)p(x_2│y,x_1 )…p(x_n |y,x_1,x_2,..x_(n-1))
+>>p(x_1…x_n│y)=p(x_1│y)p(x_2│y,x_1 )…p(x_n |y,x_1,x_2,..x_(n-1))
 
-The implications of this assumption are that once you classify a text message as spam or not, the probability of each spam word 
-in the text message is independent from the rest of the words that make up that message. Obviously, this can be a problematic assumption ergo the name of the model. 
-To train our model using the Naïve Bayes approach, I estimate p(y), p(x|y=1), and p(x|y=0) using the training model.
-For p(y=1), I just estimate the ratio of spam messages to the total messages in our training model. Subsequently, p(y=0) is estimated as 1-p(y=1). 
+The implications of this assumption are that once you classify a text message as spam or not, the probability of each spam word in the text message is independent from the rest of the words that make up that message. Obviously, this can be a problematic assumption ergo the name of the model. To train our model using the Naïve Bayes approach, I estimate p(y), p(x|y=1), and p(x|y=0) using the training model.For p(y=1), I just estimate the ratio of spam messages to the total messages in our training model. Subsequently, p(y=0) is estimated as 1-p(y=1). 
 
 Lastly, the probabilities of the text message being spam or not are compared, the greater probability overrides the other and the corresponding target label is generated for the test sample. 
 >> spamprob=(px4ys)*(py)
